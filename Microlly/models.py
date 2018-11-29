@@ -6,8 +6,8 @@ from django.contrib.auth.models import User
 class Publication(models.Model):
 	title = models.CharField(max_length=150)
 	body = models.CharField(max_length=150)
-	creation_date = models.CharField(max_length=150)
-	update_date = models.CharField(max_length=150)
+	creation_date = models.DateTimeField(auto_now_add=True)
+	update_date = models.DateTimeField(auto_now_add=True)
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	class Meta:
 		verbose_name = "Publication"

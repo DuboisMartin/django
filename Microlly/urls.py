@@ -4,7 +4,10 @@ app_name = "Microlly"
 
 urlpatterns = [
 	path('', views.index, name='index'),
-	path('publication', views.publication, name='publication'),
+	path('publication/<str:title>', views.publication, name='publication'),
 	path('login', views.loginP, name='login'),
 	path('doLogin', views.doLogin, name='doLogin'),
+	path('logout', views.log_out, name='logout'),
+	path('newPub', views.newPub, name="newPub"),
+	path('createNewPub', views.createNewPub)
 ]

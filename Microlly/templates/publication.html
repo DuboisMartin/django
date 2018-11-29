@@ -1,0 +1,14 @@
+{% extends "_base.html" %}
+
+{% block body %}
+
+<h1> Publication</h1>
+<ul>
+    <li>Titre : {{ publication.title }}</li>
+    <li>Contenue : {{ publication.body }}</li>
+    <li>Date de création : {{ publication.creation_date }}</li>
+    <li>Date de modification : {{ publication.update_date }}</li>
+    <li>Createur : {{ publication.user }}</li>
+</ul>
+
+{% endblock %}

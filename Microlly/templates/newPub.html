@@ -1,0 +1,18 @@
+{% extends "_base.html" %}
+
+{% block title %}
+	{{INDEX_PAGE_TITLE}}
+{% endblock %}
+
+{% block body %}
+    <form method="post" action="/createNewPub">
+    {% csrf_token %}
+    <table>
+        <input type="text" name="title" placeholder="Titre">
+        <input type="text" name="body" placeholder="Contenu">
+    </table>
+    
+    <input type="submit" value="Créer">
+    </form>
+
+{% endblock %}
