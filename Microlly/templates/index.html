@@ -1,0 +1,13 @@
+{% extends "_base.html" %}
+
+{% block title %}
+	{{INDEX_PAGE_TITLE}}
+{% endblock %}
+
+{% block body %}
+{% if user.is_authenticated %}
+	Vous êtes authentifier
+{% else %}
+
+{% endif %}
+{% endblock %}
