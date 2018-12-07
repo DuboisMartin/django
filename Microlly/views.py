@@ -3,6 +3,7 @@ from Microlly.models import *
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from django.contrib.auth.models import User
 # Create your views here.
 
 def index(request):
@@ -44,3 +45,13 @@ def createNewPub(request):
 	pub.save()
 	return redirect('publication/'+title)
 	
+def newUser(request):
+	return render(request, 'newUser.html')
+
+def createNewUser(request):
+	p_username = request.POST['username']
+	p_password = request.POST['password']
+	user = User.objects.create_user(username=p_username, password=p_password)
+	user.save()
+	login(request, user)
+	return redirect('/login')

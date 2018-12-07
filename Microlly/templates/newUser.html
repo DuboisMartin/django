@@ -1,0 +1,18 @@
+{% extends "_base.html" %}
+
+{% block title %}
+	{{INDEX_PAGE_TITLE}}
+{% endblock %}
+
+{% block body %}
+    <form method="post" action="/createNewUser">
+    {% csrf_token %}
+    <table>
+        <input type="text" name="username" placeholder="username">
+        <input type="password" name="password" placeholder="password">
+    </table>
+    
+    <input type="submit" value="Créer">
+    </form>
+
+{% endblock %}

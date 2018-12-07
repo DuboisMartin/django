@@ -9,5 +9,7 @@ urlpatterns = [
 	path('doLogin', views.doLogin, name='doLogin'),
 	path('logout', views.log_out, name='logout'),
 	path('newPub', views.newPub, name="newPub"),
-	path('createNewPub', views.createNewPub)
+	path('createNewPub', views.createNewPub),
+	path('newUser', views.newUser, name="newUser"),
+	path('createNewUser', views.createNewUser)
 ]
