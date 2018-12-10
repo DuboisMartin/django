@@ -10,5 +10,11 @@
     <li>Date de modification : {{ publication.update_date }}</li>
     <li>Createur : {{ publication.user }}</li>
 </ul>
+    {% if user.is_authenticated %}
+        <form method="post" action="/deletePub/{{publication.id}}">
+        {% csrf_token %}
+        <input type="submit" value="delete">
+        </form>
+    {% endif %}
 
 {% endblock %}

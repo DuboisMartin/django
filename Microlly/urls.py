@@ -11,5 +11,6 @@ urlpatterns = [
 	path('newPub', views.newPub, name="newPub"),
 	path('createNewPub', views.createNewPub),
 	path('newUser', views.newUser, name="newUser"),
-	path('createNewUser', views.createNewUser)
+	path('createNewUser', views.createNewUser),
+	path('deletePub/<int:id>', views.deletePub)
 ]

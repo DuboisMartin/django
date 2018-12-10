@@ -23,7 +23,7 @@ def doLogin(request):
 		login(request, user)
 		return redirect('/')
 	else:
-		return  redirect('loginP')
+		return  redirect('login')
 
 def loginP(request):
 		return render(request, 'connection.html')
@@ -31,7 +31,7 @@ def loginP(request):
 @login_required(login_url='/login')
 def log_out(request):
 	logout(request)
-	return redirect('/')	
+	return redirect('/')
 
 @login_required(login_url='/login')
 def newPub(request):
@@ -55,3 +55,15 @@ def createNewUser(request):
 	user.save()
 	login(request, user)
 	return redirect('/login')
+
+@login_required(login_url='/login')
+def deletePub(request, id):
+	username = request.user.username
+	print(username)
+	pub = Publication.objects.get(id=id)
+	if pub.user.username == username:
+		print(pub.user.username)
+		pub.delete()
+		return redirect('/')
+	else:
+		return redirect('/')

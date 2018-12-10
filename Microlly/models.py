@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Publication(models.Model):
+	id = models.AutoField(primary_key=True)
 	title = models.CharField(max_length=150)
 	body = models.CharField(max_length=150)
 	creation_date = models.DateTimeField(auto_now_add=True)
