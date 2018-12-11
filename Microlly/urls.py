@@ -11,8 +11,8 @@ urlpatterns = [
 	path('newPub', views.newPub, name="newPub"),
 	path('createNewPub', views.createNewPub),
 	path('newUser', views.newUser, name="newUser"),
-	path('createNewUser', views.createNewUser),
-	path('deletePub/<int:id>', views.deletePub),
-	path('modifyPub/<int:id>', views.modifyPub),
-	path('doModifyPub/<int:id>', views.doModifyPub)
+	path('createNewUser', views.createNewUser, name="createNewUser"),
+	path('deletePub/<int:id>', views.deletePub, name="deletePub"),
+	path('modifyPub/<int:id>', views.modifyPub, name="modifyPub"),
+	path('doModifyPub/<int:id>', views.doModifyPub, name="doModifyPub")
 ]

@@ -43,8 +43,7 @@ def createNewPub(request):
 	body = request.POST['body']
 	pub = Publication(title=title, body=body, user=request.user)
 	pub.save()
-	url = "publication/"+str(pub.id)
-	return redirect(url)
+	return redirect("publication/{}".format(pub.id))
 	
 def newUser(request):
 	return render(request, 'newUser.html')
@@ -70,7 +69,6 @@ def deletePub(request, id):
 @login_required(login_url='/login')
 def modifyPub(request, id):
 	pub = get_object_or_404(Publication, id=id)
-	#pub = Publication.objects.get(id=id)
 	if pub.user.username == request.user.username:
 		return render(request, 'modifyPub.html', {'publication': pub})
 	else:
@@ -85,6 +83,6 @@ def doModifyPub(request, id):
 		pub.title = title
 		pub.body = body
 		pub.save()
-		return redirect('/')
+		return redirect('/publication/{}'.format(pub.id))
 	else:
 		return redirect('/')
