@@ -1,24 +1,28 @@
 {% extends "_base.html" %}
 
 {% block body %}
+<div class="container">
 
 <h1> Publication</h1>
-<ul>
-    <li>Titre : {{ publication.title }}</li>
-    <li>Contenue : {{ publication.body }}</li>
-    <li>Date de création : {{ publication.creation_date }}</li>
-    <li>Date de modification : {{ publication.update_date }}</li>
-    <li>Createur : {{ publication.user }}</li>
-</ul>
+<div class="container">
+    <ul class="list-group">
+        <li class="list-group-item">Titre : {{ publication.title }}</li>
+        <li class="list-group-item">Contenue : {{ publication.body }}</li>
+        <li class="list-group-item">Date de création : {{ publication.creation_date }}</li>
+        <li class="list-group-item">Date de modification : {{ publication.update_date }}</li>
+        <li class="list-group-item">Createur : {{ publication.user }}</li>
+    </ul>
+</div>
     {% if user.is_authenticated %}
-        <form method="post" action="/deletePub/{{publication.id}}">
+        <form class="form" method="post" action="/deletePub/{{publication.id}}">
         {% csrf_token %}
-        <input class="form-control" type="submit" value="Supprimer">
+        <input class="form-control form-control-sm" type="submit" value="Supprimer">
         </form>
         <form method="post" action="/modifyPub/{{ publication.id }}">
         {% csrf_token %}
-        <input class="form-control" type="submit" value="Modifier">
+        <input class="form-control form-control-sm" type="submit" value="Modifier">
         </form>
     {% endif %}
 
+</div>
 {% endblock %}

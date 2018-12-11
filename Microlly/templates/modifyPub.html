@@ -5,19 +5,21 @@
 {% endblock %}
 
 {% block body %}
-        <form class="form" method="post" action="/doModifyPub/{{ publication.id }}">
-        {% csrf_token %}
-            <h1 class="h3 mb-3 font-weight-normal">Modification </h1>
-            <div class="form-group">
-                <label for="titleInput">Titre de la publication</label>
-                <input class="form-control form-control-lg" id="titleInput" type="text" name="title" value="{{ publication.title }}">
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">Contenu de la publication</label>
-                <textarea class="form-control form-control-lg" id="textArea" name="body" rows="3">{{ publication.body }}</textarea>
-            </div>
+        <div class="container">
+            <form class="form" method="post" action="/doModifyPub/{{ publication.id }}">
+            {% csrf_token %}
+                <h1 class="h3 mb-3 font-weight-normal">Modification </h1>
+                <div class="form-group">
+                    <label for="titleInput">Titre de la publication</label>
+                    <input class="form-control" id="titleInput" type="text" name="title" value="{{ publication.title }}">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Contenu de la publication</label>
+                    <textarea class="form-control" id="textArea" name="body" rows="3">{{ publication.body }}</textarea>
+                </div>
 
-        <input type="submit" value="Modifier">
-        </form>
+            <input type="submit" value="Modifier">
+            </form>
+        </div>
 
 {% endblock %}
