@@ -11,8 +11,8 @@ def index(request):
 	return render(request, 'index.html', {'publications': pubs})
 
 @login_required(login_url='/login')
-def publication(request, title):
-	pub = get_object_or_404(Publication, title=title)
+def publication(request, id):
+	pub = get_object_or_404(Publication, id=id)
 	return render(request, 'publication.html', {'publication': pub})
 
 def doLogin(request):
@@ -43,7 +43,8 @@ def createNewPub(request):
 	body = request.POST['body']
 	pub = Publication(title=title, body=body, user=request.user)
 	pub.save()
-	return redirect('publication/'+title)
+	url = "publication/"+str(pub.id)
+	return redirect(url)
 	
 def newUser(request):
 	return render(request, 'newUser.html')
@@ -59,11 +60,31 @@ def createNewUser(request):
 @login_required(login_url='/login')
 def deletePub(request, id):
 	username = request.user.username
-	print(username)
 	pub = Publication.objects.get(id=id)
 	if pub.user.username == username:
-		print(pub.user.username)
 		pub.delete()
+		return redirect('/')
+	else:
+		return redirect('/')
+
+@login_required(login_url='/login')
+def modifyPub(request, id):
+	pub = get_object_or_404(Publication, id=id)
+	#pub = Publication.objects.get(id=id)
+	if pub.user.username == request.user.username:
+		return render(request, 'modifyPub.html', {'publication': pub})
+	else:
+		return redirect('/')
+
+@login_required(login_url='/login')
+def doModifyPub(request, id):
+	title = request.POST['title']
+	body = request.POST['body']
+	pub = get_object_or_404(Publication, id=id)
+	if pub.user.username == request.user.username:
+		pub.title = title
+		pub.body = body
+		pub.save()
 		return redirect('/')
 	else:
 		return redirect('/')

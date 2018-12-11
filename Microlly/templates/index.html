@@ -7,7 +7,7 @@
 {% block body %}
 	{% if publications %}
 			{% for publication in publications %}
-				<h3><a href = "{% url 'Microlly:publication' publication.title %}" >{{ publication.title }}</a></h3>
+				<h3><a href = "{% url 'Microlly:publication' publication.id %}" >{{ publication.title }}</a></h3>
 				<h4>	{{publication.user}}</h4>
 			{% endfor %}
 	{% else %}
